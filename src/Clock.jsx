@@ -1,33 +1,44 @@
-import react, { Component } from "react";
-import { ReactDOM } from "react";
+import { Component } from "react";
 import moment from "moment/moment";
 
 export default class Clock extends Component {
-    constructor (props) {
+
+    constructor(props) {
         super(props)
+
         this.timer = null
+
         this.state = {
             date: new Date(),
             date_Formatted: "",
-            time_Formatted: "",
+            time: '',
         }
+
+        this.time = this.time.bind(this)
     }
 
-    componentDidMount () {
-        this.setState({date_Formatted: moment(this.state.date).format("DD/MM/YYYY")})
-        this.setState({time_Formatted: moment(this.state.date).format("hh:mm")})
+    componentDidMount() {
+        this.setState({ date_Formatted: moment(this.state.date).format("DD/MM/YYYY") })
+        this.time()
 
-        this.timer = window.setInterval(() => { this.setState({date: new Date()});
-        this.setState({date_Formatted: moment(this.state.date).format("DD/MM/YYYY")});
-        this.setState({time_Formatted: moment(this.state.date).format("hh:mm")});
-    }, 1000);
+        this.timer = window.setInterval(() => {
+            this.setState({ date: new Date() });
+            this.setState({ date_Formatted: moment(this.state.date).format("DD/MM/YYYY") });
+            this.time();
+        }, 1000);
     }
 
+    time() {
+        let minutes = this.state.date.getMinutes().toString().padStart(2, "0");
+        let hours = this.state.date.getHours().toString().padStart(2 , '0');
+
+        this.setState({time: hours + " : " + minutes}) 
+    }
 
     render() {
         return <div className="clock_container">
-            <p className="clock_date">{ this.state.date_Formatted }</p>
-            <p className="clock_time">{ this.state.date.getHours() } : { this.state.date.getMinutes() }</p>
+            <p className="clock_date">{this.state.date_Formatted}</p>
+            <p className="clock_time">{this.state.time} {this.props.children}</p>
         </div>
     }
 
