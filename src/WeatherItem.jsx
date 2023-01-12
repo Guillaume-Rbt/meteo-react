@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment/moment";
-
+import { tableIcon } from "./WeatherIcons";
 
 export default class WeatherItem extends Component {
 
@@ -19,11 +19,14 @@ export default class WeatherItem extends Component {
     }
 
     render() {
-        console.log(this.props.dataItem)
+
+        const classes = "wi " + tableIcon[this.props.dataItem.weather]
+
 
         return <div className="weather-item">
 
             <p>{ this.state.date }</p>
+            <i className={ classes }></i>
             <p>{ this.props.dataItem.tmax } °C</p>
             <p>{ this.props.dataItem.tmin } °C</p> 
         </div>

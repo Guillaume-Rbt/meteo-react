@@ -1,4 +1,5 @@
 import React, { Component, createRef } from "react";
+import TodayWeather from "./TodayWeather";
 import WeatherItem from "./WeatherItem";
 
 export default class LocationWeather extends Component {
@@ -40,7 +41,6 @@ export default class LocationWeather extends Component {
             CoordsApi = this.state.coords
         }
 
-        console.log(CoordsApi)
 
         await fetch('https://api.meteo-concept.com/api/forecast/daily?token=2b768a77cfdfb1eeb0777e31876b5215fbeddc6d878176031701598592476b90&latlng=' + CoordsApi.lat + ',' + CoordsApi.lon)
             .then(r => r.json()).then((json) => {
@@ -51,7 +51,6 @@ export default class LocationWeather extends Component {
     async handleEnter(e) {
 
         if (e.key === "Enter" && e.target.value !== "") {
-
             this.setState({ city: e.target.value })
 
             let coords = await fetch('https://api.meteo-concept.com/api/location/cities?token=2b768a77cfdfb1eeb0777e31876b5215fbeddc6d878176031701598592476b90&search=' + e.target.value)
@@ -63,14 +62,17 @@ export default class LocationWeather extends Component {
                 })
 
             this.getMeteoData(coords)
-        }
+        } 
     }
 
 
     render() {
         let data = null;
+        let todayData = { weather: 0 }
         if (this.state.meteoData !== null) {
             data = this.state.meteoData.forecast
+            todayData = data.shift();
+            console.log(todayData)
         } else {
             data = []
         }
@@ -78,10 +80,13 @@ export default class LocationWeather extends Component {
 
             <div className="field-text" >
                 <input ref={this.LocationInput} onKeyUp={this.handleEnter} ></input>
-                <div className="forecast-container">
-                        {data.map((item, i) => <WeatherItem key={i} dataItem={item}></WeatherItem>)}
-                </div>
+                <p><span className="material-symbols-outlined">pin_drop</span> <span>{this.state.city}</span></p>
+            </div>
+            <TodayWeather dataItem={todayData} ></TodayWeather>
+            <div className="forecast-container">
+                {data.map((item, i) => <WeatherItem key={i} dataItem={item}></WeatherItem>)}
+            </div>
 
-            </div></>
+        </>
     }
 } 
