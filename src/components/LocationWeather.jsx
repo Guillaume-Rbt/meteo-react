@@ -1,6 +1,8 @@
 import React, { Component, createRef } from "react";
 import TodayWeather from "./TodayWeather";
 import WeatherItem from "./WeatherItem";
+import DayWeatherDetails from "./DayWeatherDetails";
+
 
 export default class LocationWeather extends Component {
 
@@ -10,12 +12,16 @@ export default class LocationWeather extends Component {
         this.state = {
             city: "Votre position",
             meteoData: null,
-            coords: {}
+            coords: {},
+            stateDetails: false,
+            detailsData: { date: '', data: {} }
         }
+        this.nodeRef = createRef()
         this.LocationInput = createRef()
         this.handleEnter = this.handleEnter.bind(this);
         this.getLocationIp = this.getLocationIp.bind(this);
         this.getMeteoData = this.getMeteoData.bind(this);
+        this.toggleDetails = this.toggleDetails.bind(this)
     }
 
 
@@ -62,31 +68,44 @@ export default class LocationWeather extends Component {
                 })
 
             this.getMeteoData(coords)
-        } 
+        }
     }
 
 
+    toggleDetails(state, data, date) {
+        console.log(date)
+        this.setState({ stateDetails: state ? true : false })
+        this.setState({
+            detailsData: {
+                date: date,
+                data: data
+            }
+        })
+    }
     render() {
-        let data = null;
+        let data = [];
         let todayData = { weather: 0 }
         if (this.state.meteoData !== null) {
-            data = this.state.meteoData.forecast
+            for (let i = 0; i < 8; i++) {
+                data.push(this.state.meteoData.forecast[i])
+            }
             todayData = data.shift();
-            console.log(todayData)
-        } else {
-            data = []
         }
+
+        console.log(this.state.detailsData.date)
         return <>
 
             <div className="field-text" >
+
                 <input ref={this.LocationInput} onKeyUp={this.handleEnter} ></input>
                 <p><span className="material-symbols-outlined">pin_drop</span> <span>{this.state.city}</span></p>
             </div>
-            <TodayWeather dataItem={todayData} ></TodayWeather>
+            <TodayWeather onDetailsToggle={this.toggleDetails} stateDetails={this.state.stateDetails} dataItem={todayData} ></TodayWeather>
             <div className="forecast-container">
-                {data.map((item, i) => <WeatherItem key={i} dataItem={item}></WeatherItem>)}
+                {data.map((item, i) => <WeatherItem key={i} stateDetails={this.state.stateDetails} onDetailsToggle={this.toggleDetails} dataItem={item}></WeatherItem>)}
             </div>
-
+            <DayWeatherDetails DetailsData={this.state.detailsData} onCloseDetails={this.toggleDetails} isVisible={this.state.stateDetails}>
+            </DayWeatherDetails>
         </>
     }
 } 
