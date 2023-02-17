@@ -68,12 +68,16 @@ export default class LocationWeather extends Component {
                 })
 
             this.getMeteoData(coords)
+        } else if (e.key == "Enter" && e.target.value === '') {
+
+            let coords = await this.getLocationIp();
+            await this.getMeteoData(coords)
+            this.setState({city: "Votre position"})
         }
     }
 
 
     toggleDetails(state, data, date) {
-        console.log(date)
         this.setState({ stateDetails: state ? true : false })
         this.setState({
             detailsData: {
@@ -92,13 +96,12 @@ export default class LocationWeather extends Component {
             todayData = data.shift();
         }
 
-        console.log(this.state.detailsData.date)
         return <>
 
             <div className="field-text" >
 
-                <input ref={this.LocationInput} onKeyUp={this.handleEnter} ></input>
-                <p><span className="material-symbols-outlined">pin_drop</span> <span>{this.state.city}</span></p>
+                <input ref={this.LocationInput} placeholder="Entrez une localisation" onKeyUp={this.handleEnter} ></input>
+                <p><span className="material-symbols-outlined">pin_drop</span> <span class="city-input">{this.state.city}</span></p>
             </div>
             <TodayWeather onDetailsToggle={this.toggleDetails} stateDetails={this.state.stateDetails} dataItem={todayData} ></TodayWeather>
             <div className="forecast-container">

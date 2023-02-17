@@ -1,36 +1,39 @@
 import React, { Component } from "react";
-import { tableIcon } from "../WeatherIcons";
+import { WeatherCodesText } from "../WeatherCodesText";
 
 
 export default class TodayWeather extends Component {
 
     constructor(props) {
         super(props)
-        
+
         this.state = {
             buttonDisabled: false,
         }
 
-        this.onButtonClick = this.onButtonClick.bind(this)
     }
 
 
-    onButtonClick() {
-        this.props.onDetailsToggle(!this.state.buttonDisabled, this.props.dataItem, "aujourd'hui")
-    }
 
-     render() {
+    render() {
 
-        let disabled = this.props.stateDetails ? "disabled" : ''
+        let icon = { width: "50%", maxWidth: "100px", aspectRatio: "1 / 1", backgroundImage:"url(./weather-icons/weather-icons-"+ this.props.dataItem.weather + ".svg", backgroundRepeat:"no-repeat", backgroundPosition:"center", backgroundSize:"contain"};
 
-        const classes = "wi icon " + tableIcon[this.props.dataItem.weather]
+    
 
-        return <div>
-            <i className={classes}></i>
-            <p>{this.props.dataItem.tmin} °C</p>
-            <p>{this.props.dataItem.tmax} °C</p>
-            <button disabled={disabled} onClick={ this.onButtonClick }>Voir plus</button>
+        return <div className="cards weather-today">
+            <div className="weather-today_generals">
+                <p>Aujourd'hui</p>
+                <div style={icon}></div>
+                <p>{WeatherCodesText[this.props.dataItem.weather]}</p>
+                <p>{this.props.dataItem.tmin} °C</p>
+                <p>{this.props.dataItem.tmax} °C</p>
+            </div>
+            <div className="weather-today_details">
+                <p>{this.props.dataItem.tmin} °C</p>
+                <p>{this.props.dataItem.tmax} °C</p>
+            </div>
         </div>
 
-     }
+    }
 }
