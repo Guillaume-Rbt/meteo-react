@@ -36,9 +36,9 @@ export default class Clock extends Component {
     }
 
     render() {
-        return <div className="clock_container">
-            <p className="clock_date">{this.state.date_Formatted}</p>
-            <p className="clock_time">{this.state.time} {this.props.children}</p>
+        return <div className="clock-container">
+            <p className="clock-date">{this.state.date_Formatted}</p>
+            <p className="clock-time">{this.state.time} {this.props.children}</p>
         </div>
     }
 

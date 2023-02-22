@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 203.65 242.1">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f3e600;
+      }
+
+      .cls-2 {
+        fill: #cfcece;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: url(#Dégradé_sans_nom_215);
+      }
+
+      .cls-6 {
+        fill: #fff;
+        stroke: #188bb7;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-4" x="10.08" y="123.71" width="139.56" height="26.59" transform="translate(-75.49 168.84) rotate(-71.35)"/>
+    </clipPath>
+    <linearGradient id="Dégradé_sans_nom_215" data-name="Dégradé sans nom 215" x1="82.36" y1="59.63" x2="203.65" y2="59.63" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c3ccd3"/>
+      <stop offset=".13" stop-color="#c8cfd6"/>
+      <stop offset=".62" stop-color="#d8dbdf"/>
+      <stop offset="1" stop-color="#dedfe3"/>
+    </linearGradient>
+  </defs>
+  <g id="Calque_1-2" data-name="Calque 1">
+    <g id="Orages_faibles_et_locaux_100" data-name="Orages faibles et locaux 100">
+      <g id="nuageux">
+        <polygon class="cls-1" points="97.19 96.53 167.65 96.53 114.63 134.66 130.94 174.14 78.76 242.1 101.37 174.14 83.76 123.65 97.19 96.53"/>
+        <g class="cls-3">
+          <g>
+            <g>
+              <line class="cls-6" x1="58.49" y1="59.38" x2="50.7" y2="82.47"/>
+              <line class="cls-6" x1="72.82" y1="71.83" x2="65.03" y2="94.92"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="91.5" y1="70.53" x2="83.71" y2="93.62"/>
+              <line class="cls-6" x1="105.84" y1="82.98" x2="98.04" y2="106.07"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="124.52" y1="81.67" x2="116.72" y2="104.76"/>
+              <line class="cls-6" x1="138.85" y1="94.12" x2="131.05" y2="117.21"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="42.86" y1="105.68" x2="35.07" y2="128.77"/>
+              <line class="cls-6" x1="57.19" y1="118.13" x2="49.4" y2="141.22"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="75.87" y1="116.83" x2="68.08" y2="139.92"/>
+              <line class="cls-6" x1="90.21" y1="129.28" x2="82.41" y2="152.37"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="108.89" y1="127.97" x2="101.09" y2="151.06"/>
+              <line class="cls-6" x1="123.22" y1="140.42" x2="115.42" y2="163.51"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="60.24" y1="163.13" x2="52.45" y2="186.22"/>
+              <line class="cls-6" x1="74.58" y1="175.58" x2="66.78" y2="198.67"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="93.26" y1="174.27" x2="85.46" y2="197.36"/>
+              <line class="cls-6" x1="107.59" y1="186.72" x2="99.79" y2="209.81"/>
+            </g>
+            <g>
+              <line class="cls-6" x1="44.61" y1="209.42" x2="36.82" y2="232.51"/>
+              <line class="cls-6" x1="58.95" y1="221.87" x2="51.15" y2="244.97"/>
+            </g>
+          </g>
+        </g>
+        <path id="nuage" class="cls-5" d="m203.62,76.15c-.86,19.89-17.68,35.32-37.57,34.46-8.17-.35-15.58-3.4-21.42-8.23-6.92,7.34-16.88,11.75-27.77,11.28-19.89-.86-35.32-17.68-34.46-37.57.28-6.56,2.3-12.63,5.59-17.8-2.83-5.43-4.32-11.66-4.04-18.22.86-19.89,17.68-35.32,37.57-34.46,18.98.82,33.89,16.17,34.47,34.86,4.11-1.4,8.56-2.08,13.17-1.88,19.89.86,35.32,17.69,34.46,37.57Z"/>
+        <path id="nuage-2" data-name="nuage" class="cls-2" d="m121.26,70.58c-.86,19.89-17.68,35.32-37.57,34.46-8.17-.35-15.58-3.4-21.42-8.23-6.92,7.34-16.88,11.75-27.77,11.28C14.6,107.22-.83,90.4.03,70.51c.28-6.56,2.3-12.63,5.59-17.8-2.83-5.43-4.32-11.66-4.04-18.22C2.45,14.6,19.27-.83,39.16.03c18.98.82,33.89,16.17,34.47,34.86,4.11-1.4,8.56-2.08,13.17-1.88,19.89.86,35.32,17.69,34.46,37.57Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from 'react-dom';
 import { useSpring, animated } from '@react-spring/web'
+import {WindDir} from '../WindDir'
 
 export default function DayWeatherDetails(props) {
 
@@ -11,29 +13,6 @@ export default function DayWeatherDetails(props) {
     }))
 
     const [windDir, setDir] = useState("")
-
-
-    const WindDirTab = {
-        1:"N",
-        2:"NNE",
-        3:"NE",
-        4:"ENE",
-        5:"E",
-        6:"ESE",
-        7:"SE",
-        8:"SSE",
-        9:"S",
-        10:"SSW",
-        11:"SW",
-        12:"WSW",
-        13:"W",
-        14:"WNW",
-        15:"NW",
-        16:"NNW",
-        17:"N",
-    }
-
-
 
     useEffect(() => {
         if (props.isVisible) {
@@ -75,10 +54,10 @@ export default function DayWeatherDetails(props) {
         let dirMod = dirDeg % 360;
 
         let index = Math.floor(dirMod / 22.5 + 1)
-        
-        setDir(WindDirTab[index])
-    
-    },  [props.DetailsData])
+
+        setDir(WindDir[index])
+
+    }, [props.DetailsData])
 
 
 
@@ -89,16 +68,19 @@ export default function DayWeatherDetails(props) {
 
 
     return (
-        <animated.div className='overlay'  style={{...springs}}>
+        ReactDOM.createPortal(<animated.div className='overlay' onClick={onCloseDetails} style={{ ...springs }}>
             <div className="cards details-weather">
-                            <header className="header-details"><p>{props.DetailsData.date}</p> <span onClick={onCloseDetails} className="close-icon material-symbols-outlined"> close </span> </header>
-                            <p>Vent moyen : { props.DetailsData.data.wind10m } km/h direction : {windDir}</p>
-                            <p>Rafales : { props.DetailsData.data.gust10m } km/h</p>
-                            <p>Probabilité de pluie : { props.DetailsData.data.probarain } %</p>
-                            <p>Cumul de pluie : { props.DetailsData.data.rr10 } mm</p>
-                            
+                <header className="header-details"><p>{props.DetailsData.date}</p> <span onClick={onCloseDetails} className="close-icon material-symbols-outlined"> close </span> </header>
+                <div className="details-weather_content">
+                    <h2>Détails</h2>
+                    <p>Vent moyen : {props.DetailsData.data.wind10m} km/h direction : {windDir}</p>
+                    <p>Rafales : {props.DetailsData.data.gust10m} km/h</p>
+                    <p>Probabilité de pluie : {props.DetailsData.data.probarain} %</p>
+                    <p>Cumul de pluie : {props.DetailsData.data.rr10} mm</p>
+                </div>
+
             </div>
-        
-        </animated.div>
+
+        </animated.div>, document.body)
     )
 }

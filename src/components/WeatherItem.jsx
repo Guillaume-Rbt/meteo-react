@@ -18,7 +18,6 @@ export default class WeatherItem extends Component {
 
     componentDidMount() {
         let date = new Date(this.props.dataItem.datetime);
-        console.log(WeatherCodesText[this.props.dataItem.weather])
         this.setState({ date: moment(date).format('DD/MM') })
     }
 
@@ -31,8 +30,8 @@ export default class WeatherItem extends Component {
 
 
     render() {
-        let icon = { width: "50%", maxWidth: "100px", aspectRatio: "1 / 1", backgroundImage:"url(./weather-icons/weather-icons-"+ this.props.dataItem.weather + ".svg", backgroundRepeat:"no-repeat", backgroundPosition:"center", backgroundSize:"contain"};
-       
+        let icon = { backgroundImage: "url(./weather-icons/weather-icons-" + this.props.dataItem.weather + ".svg" };
+
         let disabled = this.props.stateDetails ? "disabled" : ""
 
 
@@ -43,7 +42,7 @@ export default class WeatherItem extends Component {
             <div className="cards weather-item">
 
                 <p>{this.state.date}</p>
-                <div style={icon}></div>
+                <div style={icon} className="icon-weather-item" ></div>
                 <p>{WeatherCodesText[this.props.dataItem.weather]}</p>
                 <p>{this.props.dataItem.tmax} °C</p>
                 <p>{this.props.dataItem.tmin} °C</p>

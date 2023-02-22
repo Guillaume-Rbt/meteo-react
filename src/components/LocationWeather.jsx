@@ -68,7 +68,7 @@ export default class LocationWeather extends Component {
                 })
 
             this.getMeteoData(coords)
-        } else if (e.key == "Enter" && e.target.value === '') {
+        } else if (e.key === "Enter" && e.target.value === '') {
 
             let coords = await this.getLocationIp();
             await this.getMeteoData(coords)
@@ -101,7 +101,7 @@ export default class LocationWeather extends Component {
             <div className="field-text" >
 
                 <input ref={this.LocationInput} placeholder="Entrez une localisation" onKeyUp={this.handleEnter} ></input>
-                <p><span className="material-symbols-outlined">pin_drop</span> <span class="city-input">{this.state.city}</span></p>
+                <p><span className="material-symbols-outlined">pin_drop</span> <span className="city-input">{this.state.city}</span></p>
             </div>
             <TodayWeather onDetailsToggle={this.toggleDetails} stateDetails={this.state.stateDetails} dataItem={todayData} ></TodayWeather>
             <div className="forecast-container">
